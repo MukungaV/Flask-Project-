@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block body %}
+    <form action="/products" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text"name="productname"class="form=control"placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="">Price</label>
+            <input type="number"name="productprice"class="form=control"placeholder="Enter price">
+        </div>
+        <div class="form-group">
+            <label for="">Size</label>
+            <input type="number"name="productsize"class="form=control"placeholder="Enter size">
+        </div>
+        <div class="form-group">
+            <label for="">Color</label>
+            <input type="text"name="productcolor"class="form=control"placeholder="Enter color">
+        </div>
+        <input type="submit"class="btn btn-info"value="Post Product">
+    </form>
+
+    {% if products %}
+       <div class="container">
+            <div class="row">
+                {% for product in products %}
+                    <div class="col col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="static\shoe2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                NAME {{ product.name }}
+                                SIZE {{ product.size }}
+                                COLOR {{ product.color }}
+                                PRICE {{ product.price }}
+                             </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+       </div>
+{% else %}
+        <p>Product not available</p>
+    {% endif %}
+{% endblock body %}
